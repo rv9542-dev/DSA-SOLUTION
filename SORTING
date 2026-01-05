@@ -1,0 +1,208 @@
+
+
+    // 1. Bubble Sort
+    static void problem1_bubbleSort() {
+        int[] arr = {5, 1, 4, 2, 8};
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.print("1. Bubble Sort: ");
+        for (int num : arr)
+            System.out.print(num + " ");
+        System.out.println();
+    }
+
+    // 2. Selection Sort
+    static void problem2_selectionSort() {
+        int[] arr = {64, 25, 12, 22, 11};
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minIndex = i;
+
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minIndex])
+                    minIndex = j;
+            }
+
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+        }
+
+        System.out.print("2. Selection Sort: ");
+        for (int num : arr)
+            System.out.print(num + " ");
+        System.out.println();
+    }
+
+    // 3. Insertion Sort
+    static void problem3_insertionSort() {
+        int[] arr = {12, 11, 13, 5, 6};
+
+        for (int i = 1; i < arr.length; i++) {
+            int key = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+
+        System.out.print("3. Insertion Sort: ");
+        for (int num : arr)
+            System.out.print(num + " ");
+        System.out.println();
+    }
+
+    // 4. Merge Sort
+    static void merge(int[] arr, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        for (int i = 0; i < n1; i++)
+            L[i] = arr[left + i];
+        for (int j = 0; j < n2; j++)
+            R[j] = arr[mid + 1 + j];
+
+        int i = 0, j = 0, k = left;
+
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+
+    static void mergeSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid + 1, right);
+            merge(arr, left, mid, right);
+        }
+    }
+
+    static void problem4_mergeSort() {
+        int[] arr = {38, 27, 43, 3, 9, 82, 10};
+        mergeSort(arr, 0, arr.length - 1);
+
+        System.out.print("4. Merge Sort: ");
+        for (int num : arr)
+            System.out.print(num + " ");
+        System.out.println();
+    }
+
+    // 5. Quick Sort
+    static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        return i + 1;
+    }
+
+    static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    static void problem5_quickSort() {
+        int[] arr = {10, 7, 8, 9, 1, 5};
+        quickSort(arr, 0, arr.length - 1);
+
+        System.out.print("5. Quick Sort: ");
+        for (int num : arr)
+            System.out.print(num + " ");
+        System.out.println();
+    }
+
+    // 6. Sort array in descending order
+    static void problem6_descendingSort() {
+        int[] arr = {3, 1, 4, 2, 5};
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] < arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+
+        System.out.print("6. Descending Order Sort: ");
+        for (int num : arr)
+            System.out.print(num + " ");
+        System.out.println();
+    }
+
+    // 7. Check if array is already sorted
+    static void problem7_checkSorted() {
+        int[] arr = {1, 2, 3, 4, 5};
+        boolean isSorted = true;
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                isSorted = false;
+                break;
+            }
+        }
+
+        System.out.println("7. Array is sorted: " + isSorted);
+    }
+
+    public static void main(String[] args) {
+        problem1_bubbleSort();
+        problem2_selectionSort();
+        problem3_insertionSort();
+        problem4_mergeSort();
+        problem5_quickSort();
+        problem6_descendingSort();
+        problem7_checkSorted();
+    }
+}
