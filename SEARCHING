@@ -1,0 +1,115 @@
+
+
+    // 1. Find the sum of elements in an array
+    static void problem1_sumOfArray() {
+        int[] arr = {1, 2, 3, 4, 5};
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        System.out.println("1. Sum of array = " + sum);
+    }
+
+    // 2. Find the largest element in an array
+    static void problem2_largestElement() {
+        int[] arr = {10, 45, 23, 89, 12};
+        int max = arr[0];
+        for (int num : arr) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        System.out.println("2. Largest element = " + max);
+    }
+
+    // 3. Find the smallest element in an array
+    static void problem3_smallestElement() {
+        int[] arr = {10, 45, 23, 89, 12};
+        int min = arr[0];
+        for (int num : arr) {
+            if (num < min) {
+                min = num;
+            }
+        }
+        System.out.println("3. Smallest element = " + min);
+    }
+
+    // 4. Reverse an array
+    static void problem4_reverseArray() {
+        int[] arr = {1, 2, 3, 4, 5};
+        int start = 0, end = arr.length - 1;
+
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+
+        System.out.print("4. Reversed array = ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+
+    // 5. Check if array is sorted
+    static void problem5_checkSorted() {
+        int[] arr = {1, 2, 3, 4, 5};
+        boolean isSorted = true;
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                isSorted = false;
+                break;
+            }
+        }
+
+        System.out.println("5. Array is sorted: " + isSorted);
+    }
+
+    // 6. Count even and odd numbers in an array
+    static void problem6_evenOddCount() {
+        int[] arr = {1, 2, 3, 4, 5, 6};
+        int even = 0, odd = 0;
+
+        for (int num : arr) {
+            if (num % 2 == 0)
+                even++;
+            else
+                odd++;
+        }
+
+        System.out.println("6. Even count = " + even + ", Odd count = " + odd);
+    }
+
+    // 7. Linear Search in an array
+    static void problem7_linearSearch() {
+        int[] arr = {5, 10, 15, 20, 25};
+        int key = 20;
+        int index = -1;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1)
+            System.out.println("7. Element found at index " + index);
+        else
+            System.out.println("7. Element not found");
+    }
+
+    public static void main(String[] args) {
+        problem1_sumOfArray();
+        problem2_largestElement();
+        problem3_smallestElement();
+        problem4_reverseArray();
+        problem5_checkSorted();
+        problem6_evenOddCount();
+        problem7_linearSearch();
+    }
+}
