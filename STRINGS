@@ -1,0 +1,126 @@
+
+
+    // 1. Reverse a string
+    static void problem1_reverseString() {
+        String str = "Hello";
+        String reversed = "";
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            reversed += str.charAt(i);
+        }
+
+        System.out.println("1. Reversed string = " + reversed);
+    }
+
+    // 2. Check if a string is palindrome
+    static void problem2_palindromeCheck() {
+        String str = "madam";
+        String reversed = "";
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            reversed += str.charAt(i);
+        }
+
+        if (str.equals(reversed))
+            System.out.println("2. String is palindrome");
+        else
+            System.out.println("2. String is not palindrome");
+    }
+
+    // 3. Count vowels and consonants in a string
+    static void problem3_vowelConsonantCount() {
+        String str = "programming";
+        int vowels = 0, consonants = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+                vowels++;
+            else
+                consonants++;
+        }
+
+        System.out.println("3. Vowels = " + vowels + ", Consonants = " + consonants);
+    }
+
+    // 4. Find length of string without using length()
+    static void problem4_stringLength() {
+        String str = "Java";
+        int length = 0;
+
+        for (char c : str.toCharArray()) {
+            length++;
+        }
+
+        System.out.println("4. Length of string = " + length);
+    }
+
+    // 5. Count occurrence of a character
+    static void problem5_characterOccurrence() {
+        String str = "banana";
+        char target = 'a';
+        int count = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == target)
+                count++;
+        }
+
+        System.out.println("5. Occurrence of '" + target + "' = " + count);
+    }
+
+    // 6. Remove spaces from a string
+    static void problem6_removeSpaces() {
+        String str = "Java is fun";
+        String result = "";
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != ' ')
+                result += str.charAt(i);
+        }
+
+        System.out.println("6. String without spaces = " + result);
+    }
+
+    // 7. Check if two strings are anagrams
+    static void problem7_anagramCheck() {
+        String str1 = "listen";
+        String str2 = "silent";
+
+        if (str1.length() != str2.length()) {
+            System.out.println("7. Strings are not anagrams");
+            return;
+        }
+
+        int[] count = new int[26];
+
+        for (int i = 0; i < str1.length(); i++) {
+            count[str1.charAt(i) - 'a']++;
+            count[str2.charAt(i) - 'a']--;
+        }
+
+        boolean isAnagram = true;
+        for (int c : count) {
+            if (c != 0) {
+                isAnagram = false;
+                break;
+            }
+        }
+
+        if (isAnagram)
+            System.out.println("7. Strings are anagrams");
+        else
+            System.out.println("7. Strings are not anagrams");
+    }
+
+    public static void main(String[] args) {
+        problem1_reverseString();
+        problem2_palindromeCheck();
+        problem3_vowelConsonantCount();
+        problem4_stringLength();
+        problem5_characterOccurrence();
+        problem6_removeSpaces();
+        problem7_anagramCheck();
+    }
+}
